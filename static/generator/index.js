@@ -1,7 +1,7 @@
 const canvas = document.getElementById("meme-canvas");
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
 const fistImageTemplate = createImage("https://callmedas69.github.io/tts-ooval-stoodio//fist.png");
-const laserImageTemplate = createImage(https://callmedas69.github.io/tts-ooval-stoodio//laser.png");
+const laserImageTemplate = createImage("https://callmedas69.github.io/tts-ooval-stoodio//laser.png");
 
 let canvasImage = new Image();
 let fists = [];
