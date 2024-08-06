@@ -13,10 +13,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 }
 
 header {
-  position: relative;
   text-align: center;
   padding: 1rem;
   background-color: rgb(170, 0, 0);
@@ -59,6 +59,8 @@ main {
 
 #meme-canvas {
   border: 1px solid rgb(233, 159, 1);
+  width: 100%;
+  height: auto;
 }
 
 .canvas-container {
