@@ -10,16 +10,16 @@ let isDragging = false;
 let currentElement = null;
 let offsetX, offsetY;
 
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = 350;
+canvas.height = 350;
 
 document.getElementById("image-upload").addEventListener("change", handleImageUpload);
 document.getElementById("add-fist-button").addEventListener("click", () => addElement(fistImageTemplate, fists));
 document.getElementById("add-laser-button").addEventListener("click", () => addElement(laserImageTemplate, lasers));
-document.getElementById("resize-fist-slider").addEventListener("input", (e) => resizeElements(e, fists));
-document.getElementById("rotate-fist-slider").addEventListener("input", (e) => rotateElements(e, fists));
-document.getElementById("resize-laser-slider").addEventListener("input", (e) => resizeElements(e, lasers));
-document.getElementById("rotate-laser-slider").addEventListener("input", (e) => rotateElements(e, lasers));
+document.getElementById("resize-fist-slider").addEventListener("input", (e) => debounce(resizeElements, 50)(e, fists));
+document.getElementById("rotate-fist-slider").addEventListener("input", (e) => debounce(rotateElements, 50)(e, fists));
+document.getElementById("resize-laser-slider").addEventListener("input", (e) => debounce(resizeElements, 50)(e, lasers));
+document.getElementById("rotate-laser-slider").addEventListener("input", (e) => debounce(rotateElements, 50)(e, lasers));
 document.getElementById("delete-fist-button").addEventListener("click", () => deleteLastElement(fists));
 document.getElementById("delete-laser-button").addEventListener("click", () => deleteLastElement(lasers));
 document.getElementById("reset-button").addEventListener("click", resetCanvas);
@@ -28,8 +28,8 @@ document.getElementById("download-button").addEventListener("click", downloadCan
 canvas.addEventListener("mousedown", handleMouseDown);
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mouseup", handleMouseUp);
-canvas.addEventListener("touchstart", handleTouchStart);
-canvas.addEventListener("touchmove", handleTouchMove);
+canvas.addEventListener("touchstart", handleTouchStart, { passive: false });
+canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
 canvas.addEventListener("touchend", handleTouchEnd);
 
 function createImage(src) {
@@ -241,4 +241,15 @@ function drawElements(elementsArray) {
 
 function applyGradientMapFilter() {
     // Implement gradient mapping logic if needed.
+}
+
+// Debounce function to limit the rate at which a function is executed
+function debounce(func, delay) {
+    let timeout;
+    return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+    };
 }
