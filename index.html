@@ -11,36 +11,34 @@
         <div class="header-content">
             <img src="logo.png" alt="Logo" class="logo">
             <h1>TTS Ooval Stoodio</h1>
+            <h2>Craft Your Own Meme</h2>
         </div>
-        <h2>Craft Your Own Meme</h2>
     </header>
     <main>
+        <div class="upload-container">
+            <label for="image-upload" class="button">Upload Image</label>
+            <input type="file" id="image-upload" accept="image/*">
+        </div>
         <div class="canvas-container">
             <canvas id="meme-canvas"></canvas>
         </div>
-        <div class="controls">
-            <div class="upload-container">
-                <label for="image-upload" class="button">Upload Image</label>
-                <input type="file" id="image-upload" accept="image/*" hidden>
-            </div>
-            <div id="button-container" class="button-group">
-                <button id="add-fist-button" class="button">Add Fist</button>
-                <button id="add-laser-button" class="button">Add Laser</button>
-                <button id="delete-fist-button" class="button">Delete Fist</button>
-                <button id="delete-laser-button" class="button">Delete Laser</button>
-                <button id="reset-button" class="button">Reset</button>
-                <button id="download-button" class="button">Save</button>
-            </div>
-            <div class="sliders">
-                <label for="resize-fist-slider">~ Resize Fist ~</label>
-                <input type="range" id="resize-fist-slider" min="0.5" max="2" step="0.1" value="1">
-                <label for="rotate-fist-slider">~ Rotate Fist ~</label>
-                <input type="range" id="rotate-fist-slider" min="0" max="360" step="1" value="0">
-                <label for="resize-laser-slider">~ Resize Laser ~</label>
-                <input type="range" id="resize-laser-slider" min="0.5" max="2" step="0.1" value="1">
-                <label for="rotate-laser-slider">~ Rotate Laser ~</label>
-                <input type="range" id="rotate-laser-slider" min="0" max="360" step="1" value="0">
-            </div>
+        <div id="button-container" class="button-group" style="display: none;">
+            <button id="add-fist-button" class="button">Add Fist</button>
+            <button id="add-laser-button" class="button">Add Laser</button>
+            <button id="delete-fist-button" class="button">Delete Last Fist</button>
+            <button id="delete-laser-button" class="button">Delete Last Laser</button>
+            <button id="reset-button" class="button">Reset</button>
+            <button id="download-button" class="button">Download</button>
+        </div>
+        <div class="sliders">
+            <label for="resize-fist-slider">Resize Fist</label>
+            <input type="range" id="resize-fist-slider" min="0.1" max="3" step="0.1" value="1">
+            <label for="rotate-fist-slider">Rotate Fist</label>
+            <input type="range" id="rotate-fist-slider" min="0" max="360" step="1" value="0">
+            <label for="resize-laser-slider">Resize Laser</label>
+            <input type="range" id="resize-laser-slider" min="0.1" max="3" step="0.1" value="1">
+            <label for="rotate-laser-slider">Rotate Laser</label>
+            <input type="range" id="rotate-laser-slider" min="0" max="360" step="1" value="0">
         </div>
     </main>
     <script src="static/generator/index.js"></script>
